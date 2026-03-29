@@ -1,0 +1,77 @@
+name: "Release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      imageVersion:
+        description: "New image version tag"
+        required: false
+        default: "ubuntu-22.04"
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set lowercase repository owner
+        run: echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./images/${{ github.event.inputs.imageVersion }}
+          push: true
+          tags: |
+            ghcr.io/${{ env.REPO_OWNER }}/entorno-codespaces:${{ github.event.inputs.imageVersion }}
+            ghcr.io/${{ env.REPO_OWNER }}/entorno-codespaces:latest
+
+  open-release-pr:
+    runs-on: ubuntu-latest
+    needs: build-and-push-image
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set lowercase repository owner
+        run: echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
+      - name: Update template defaults
+        env:
+          REPO_OWNER: ${{ env.REPO_OWNER }}
+          IMAGE_VERSION: ${{ github.event.inputs.imageVersion }}
+        run: |
+          sed -i "s|FROM
+
+      - name: Create release PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE_VERSION: ${{ github.event.inputs.imageVersion }}
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
+          branch="release/$IMAGE_VERSION"
+          git checkout -b "$branch"
+          git add src/devcontainer/devcontainer-template.json
+          git commit -m "chore: release $IMAGE_VERSION"
+          git push origin "$branch"
+
+          gh pr create \
+            --title "chore: release $IMAGE_VERSION" \
+            --body "Bumps devcontainer template defaults to image \`ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/entorno-codespaces:$IMAGE_VERSION\`." \
+            --base main \
+            --head "$branch"

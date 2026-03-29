@@ -1,0 +1,19 @@
+{
+  "name": "SisOp Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.hexeditor",
+        "matepek.vscode-catch2-test-adapter",
+        "eamodio.gitlens",
+        "nhoizey.gremlins"
+      ]
+    }
+  }
+}
