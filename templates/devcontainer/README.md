@@ -13,4 +13,4 @@ Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA). Basado en 
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/sisoputnfrba/entorno-docker/blob/main/templates/devcontainer/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/RaniAgus/entorno-docker/blob/main/templates/devcontainer/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
