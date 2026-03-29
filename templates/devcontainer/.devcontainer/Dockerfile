@@ -7,13 +7,11 @@ RUN useradd -m -s /bin/bash vscode \
     && echo "vscode ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode \
     && chmod 0440 /etc/sudoers.d/vscode
 
-# Install cspec (pinned commit)
 RUN curl -L https://github.com/mumuki/cspec/archive/${CSPEC_COMMIT}.tar.gz \
     | tar -xz -C /tmp \
     && make -C /tmp/cspec-${CSPEC_COMMIT} debug install \
     && rm -rf /tmp/cspec-${CSPEC_COMMIT}
 
-# Install so-commons-library (release tag)
 RUN curl -L https://github.com/sisoputnfrba/so-commons-library/archive/${COMMONS_VERSION}.tar.gz \
     | tar -xz -C /tmp \
     && make -C /tmp/so-commons-library-${COMMONS_VERSION} debug install \
