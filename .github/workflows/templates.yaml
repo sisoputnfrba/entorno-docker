@@ -1,4 +1,4 @@
-name: "Publish template"
+name: "Publish Dev Container templates"
 
 on:
   push:
