@@ -39,7 +39,6 @@ RUN apt-get install -y \
     tree \
     wget \
     xclip \
-    openjdk-17-jdk \
     hexedit \
     nano \
     vim \

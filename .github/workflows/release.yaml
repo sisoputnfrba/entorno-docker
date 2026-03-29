@@ -99,7 +99,7 @@ jobs:
             git push origin "$branch"
             gh pr create \
               --title "chore: release $IMAGE_VERSION" \
-              --body "Bumps devcontainer template defaults to image \`ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/entorno-devcontainers:$IMAGE_VERSION\`." \
+              --body "Bumps devcontainer template to image \`ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/entorno-devcontainers:$IMAGE_VERSION\`." \
               --base main \
               --head "$branch"
           fi
