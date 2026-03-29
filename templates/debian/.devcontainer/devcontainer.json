@@ -10,8 +10,8 @@
       "extensions": [
         "ms-vscode.cpptools-extension-pack",
         "ms-vscode.hexeditor",
-        "eamodio.gitlens",
-        "nhoizey.gremlins"
+        "nhoizey.gremlins",
+        "eamodio.gitlens"
       ]
     }
   }
