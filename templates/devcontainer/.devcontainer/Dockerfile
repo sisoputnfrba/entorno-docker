@@ -1,4 +1,4 @@
-FROM ghcr.io/sisoputnfrba/entorno-codespaces:ubuntu-22.04
+FROM ghcr.io/sisoputnfrba/entorno-devcontainers:ubuntu-22.04
 
 ARG CSPEC_COMMIT=043089d9c55871526f1d6728af4d0febdbe8c38a
 ARG COMMONS_VERSION=1.9.0
