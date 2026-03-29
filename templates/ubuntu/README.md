@@ -1,5 +1,5 @@
 
-# SisOp Dev Container Template (devcontainer)
+# SisOp Dev Container Template (ubuntu)
 
 Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA). Basado en Ubuntu con herramientas C, GDB y Valgrind.
 
