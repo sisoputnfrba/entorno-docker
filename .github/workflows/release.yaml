@@ -30,7 +30,7 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v7
         with:
-          context: tags/${{ github.event.inputs.imageVersion }}
+          context: images/${{ github.event.inputs.imageVersion }}
           push: true
           tags: |
             ghcr.io/${{ env.REPO_OWNER }}/entorno-devcontainers:${{ github.event.inputs.imageVersion }}
