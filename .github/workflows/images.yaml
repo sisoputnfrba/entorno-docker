@@ -15,7 +15,11 @@ jobs:
       - name: List image versions
         id: list
         run: |
-          VERSIONS=$(ls images/ | jq -R . | jq -sc .)
+          VERSIONS=$(
+            find images -name Dockerfile |
+            sed 's|images/||; s|/Dockerfile||' |
+            jq -R . | jq -sc .
+          )
           echo "versions=$VERSIONS" >> $GITHUB_OUTPUT
 
   build-and-push-image:
@@ -40,10 +44,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Compute image ref
+        run: |
+          IMAGE_NAME=$(echo "${{ matrix.version }}" | cut -d/ -f1)
+          IMAGE_TAG=$(echo "${{ matrix.version }}"  | cut -d/ -f2)
+          echo "IMAGE_REF=ghcr.io/${REPO_OWNER}/entorno-docker/${IMAGE_NAME}:${IMAGE_TAG}" >> $GITHUB_ENV
+
       - name: Build and push image
         uses: docker/build-push-action@v7
         with:
           context: images/${{ matrix.version }}
           push: true
-          tags: |
-            ghcr.io/${{ env.REPO_OWNER }}/entorno-docker:${{ matrix.version }}
+          tags: ${{ env.IMAGE_REF }}

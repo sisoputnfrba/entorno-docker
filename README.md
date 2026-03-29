@@ -13,7 +13,7 @@ simplemente hay que:
 2. Hacer click en el icono de abajo a la izquierda
 3. Seleccionar `Add Dev Container Configuration Files...`.
 4. Elegir la opción `Add configuration to workspace`.
-5. Ingresar `ghcr.io/sisoputnfrba/entorno-devcontainers/ubuntu`
+5. Ingresar `ghcr.io/sisoputnfrba/entorno-docker/devcontainer`
 6. Hacer click en OK
 
 Se va a crear una carpeta `.devcontainer` con un `Dockerfile` y un `devcontainer.json`. Es necesario
