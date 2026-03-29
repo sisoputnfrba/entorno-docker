@@ -37,7 +37,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config pull.rebase false
 
-          branch="automated-documentation-update-$GITHUB_RUN_ID"
+          branch="docs/automated-update-$GITHUB_RUN_ID"
           git checkout -b "$branch"
 
           git add "templates/**/README.md"

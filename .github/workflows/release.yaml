@@ -64,7 +64,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
 
-          branch="release/$IMAGE_VERSION"
+          branch="release/$IMAGE_VERSION-$GITHUB_RUN_ID"
           git checkout -b "$branch"
           git add templates/devcontainer/.devcontainer/Dockerfile
           git commit -m "chore: release $IMAGE_VERSION" || export NO_UPDATES=true
