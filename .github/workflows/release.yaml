@@ -54,7 +54,7 @@ jobs:
           REPO_OWNER: ${{ env.REPO_OWNER }}
           IMAGE_VERSION: ${{ github.event.inputs.imageVersion }}
         run: |
-          sed -i "s|FROM
+          sed -i "s|^FROM ghcr.io/.*/entorno-codespaces:.*$|FROM ghcr.io/${REPO_OWNER}/entorno-codespaces:${IMAGE_VERSION}|g" templates/devcontainer/.devcontainer/Dockerfile
 
       - name: Create release PR
         env:
@@ -66,12 +66,14 @@ jobs:
 
           branch="release/$IMAGE_VERSION"
           git checkout -b "$branch"
-          git add src/devcontainer/devcontainer-template.json
-          git commit -m "chore: release $IMAGE_VERSION"
-          git push origin "$branch"
+          git add templates/devcontainer/.devcontainer/Dockerfile
+          git commit -m "chore: release $IMAGE_VERSION" || export NO_UPDATES=true
 
-          gh pr create \
-            --title "chore: release $IMAGE_VERSION" \
-            --body "Bumps devcontainer template defaults to image \`ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/entorno-codespaces:$IMAGE_VERSION\`." \
-            --base main \
-            --head "$branch"
+          if [ "$NO_UPDATES" != "true" ]; then
+            git push origin "$branch"
+            gh pr create \
+              --title "chore: release $IMAGE_VERSION" \
+              --body "Bumps devcontainer template defaults to image \`ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/entorno-codespaces:$IMAGE_VERSION\`." \
+              --base main \
+              --head "$branch"
+          fi
