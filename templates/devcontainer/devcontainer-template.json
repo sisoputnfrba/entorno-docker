@@ -1,6 +1,6 @@
 {
   "id": "devcontainer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "name": "SisOp Dev Container Template",
   "description": "Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA). Basado en Ubuntu con herramientas C, GDB y Valgrind.",
   "publisher": "Agustin Ranieri",
