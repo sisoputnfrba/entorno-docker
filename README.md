@@ -2,7 +2,12 @@
 
 Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA) basado en
 [Development Containers](https://containers.dev/). Diseñado para cuando no sea posible utilizar
-las [VMs de la cátedra](http://faq.utnso.com.ar/vms).
+las [VMs de la cátedra](https://faq.utnso.com.ar/vms).
+
+> [!NOTE]
+> Este entorno está funcional pero aún no fue extensamente probado. Si querés ser de los
+> primeros en probarlo, tu feedback es bienvenido. Ante cualquier problema, no dudes en contactarnos
+> a través del [foro](https://faq.utnso.com.ar/foro).
 
 <img width="1350" height="910" alt="image" src="https://github.com/user-attachments/assets/7f3e8b27-4c87-4e51-b131-649e833dac45" />
 
