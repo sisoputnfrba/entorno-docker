@@ -19,8 +19,8 @@ Para agregarlo al repositorio, simplemente hay que:
 [Dev Containers](https://code.visualstudio.com/docs/remote/containers)
 2. Abrir la carpeta del proyecto
 3. Hacer click en el icono de abajo a la izquierda
-4. Seleccionar `Add Dev Container Configuration Files...`.
-5. Elegir la opción `Add configuration to workspace`.
+4. Seleccionar `Add Dev Container Configuration Files...`
+5. Elegir la opción `Add configuration to workspace`
 6. Ingresar `ghcr.io/sisoputnfrba/entorno-docker/devcontainer`
 7. Hacer click en OK
 
