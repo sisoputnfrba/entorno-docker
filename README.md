@@ -1,7 +1,8 @@
 # SisOp Dev Containers (beta)
 
-Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA). Basado en Ubuntu con
-herramientas C, GDB y Valgrind.
+Entorno de desarrollo para la materia Sistemas Operativos (UTN FRBA) basado en
+[Development Containers](https://containers.dev/). Diseñado para cuando no sea posible utilizar
+las [VMs de la cátedra](http://faq.utnso.com.ar/vms).
 
 <img width="1350" height="910" alt="image" src="https://github.com/user-attachments/assets/7f3e8b27-4c87-4e51-b131-649e833dac45" />
 
