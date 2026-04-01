@@ -44,6 +44,7 @@ RUN apt-get install -y \
     nano \
     vim \
     emacs \
+    openssh-server \
     sudo \
     && apt-get remove -y unattended-upgrades \
     && rm -rf /var/lib/apt/lists/*
