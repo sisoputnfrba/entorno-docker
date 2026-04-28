@@ -13,8 +13,7 @@
       "extensions": [
         "ms-vscode.cpptools-extension-pack",
         "ms-vscode.hexeditor",
-        "nhoizey.gremlins",
-        "Gruntfuggly.triggertaskonsave"
+        "nhoizey.gremlins"
       ]
     }
   }
